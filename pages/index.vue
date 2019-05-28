@@ -41,7 +41,7 @@
       </v-layout>
     </v-flex>
     <v-flex xs12 sm6 md6>
-      <div>bbb</div>
+      <div>items area</div>
     </v-flex>
   </v-layout>
 </template>
