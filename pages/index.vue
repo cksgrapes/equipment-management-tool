@@ -1,70 +1,66 @@
 <template>
-  <v-layout column justify-center align-center>
-    <v-flex xs12 sm8 md6>
-      <div class="text-xs-center">
-        <logo />
-        <vuetify-logo />
-      </div>
-      <v-card>
-        <v-card-title class="headline"
-          >Welcome to the Vuetify + Nuxt.js template</v-card-title
-        >
-        <v-card-text>
-          <p>
-            Vuetify is a progressive Material Design component framework for
-            Vue.js. It was designed to empower developers to create amazing
-            applications.
-          </p>
-          <p>
-            For more information on Vuetify, check out the
-            <a href="https://vuetifyjs.com" target="_blank">documentation</a>.
-          </p>
-          <p>
-            If you have questions, please join the official
-            <a href="https://chat.vuetifyjs.com/" target="_blank" title="chat"
-              >discord</a
-            >.
-          </p>
-          <p>
-            Find a bug? Report it on the github
-            <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              title="contribute"
-              >issue board</a
-            >.
-          </p>
-          <p>
-            Thank you for developing with Vuetify and I look forward to bringing
-            more exciting features in the future.
-          </p>
-          <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
-          </div>
-          <hr class="my-3" />
-          <a href="https://nuxtjs.org/" target="_blank">Nuxt Documentation</a>
-          <br />
-          <a href="https://github.com/nuxt/nuxt.js" target="_blank"
-            >Nuxt GitHub</a
-          >
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn color="primary" flat nuxt to="/inspire">Continue</v-btn>
-        </v-card-actions>
-      </v-card>
+  <v-layout row wrap justify-center reverse align-center>
+    <v-flex xs12 sm6 md6>
+      <h1 class="display-1">[SOTM001] Microphone - BOSE</h1>
+      <p class="title">早乙女学園所有備品</p>
+      <v-layout row wrap align-center>
+        <v-flex xs12 sm6 md6>
+          <v-layout row wrap>
+            <v-flex xs6 sm12 md12>
+              <v-select
+                :items="items"
+                label="借りるひと"
+              ></v-select>
+            </v-flex>
+            <v-flex xs6 sm12 md12>
+              <v-menu
+                v-model="menu2"
+                :close-on-content-click="false"
+                :nudge-right="40"
+                transition="scale-transition"
+                offset-y
+                full-width
+                min-width="290px"
+              >
+                <template v-slot:activator="{ on }">
+                  <v-text-field
+                    v-model="date"
+                    label="返却予定日"
+                    readonly
+                    v-on="on"
+                  ></v-text-field>
+                </template>
+                <v-date-picker v-model="date" @input="menu2 = false"></v-date-picker>
+              </v-menu>
+            </v-flex>
+          </v-layout>
+        </v-flex>
+        <v-flex xs12 sm6 md6>
+          <v-btn color="primary" large block dark>借りる</v-btn>
+        </v-flex>
+      </v-layout>
+    </v-flex>
+    <v-flex xs12 sm6 md6>
+      <div>items area</div>
     </v-flex>
   </v-layout>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import VuetifyLogo from '~/components/VuetifyLogo.vue'
-
+// import Logo from '~/components/Logo.vue'
+// import VuetifyLogo from '~/components/VuetifyLogo.vue'
+//
 export default {
-  components: {
-    Logo,
-    VuetifyLogo
-  }
+  // components: {
+  //   Logo,
+  //   VuetifyLogo
+  // }
+  data: () => ({
+    items: ['七海春歌','渋谷友千香','一ノ瀬トキヤ', '一十木音也', '四ノ宮那月'],
+    date: new Date().toISOString().substr(0, 10),
+    menu: false,
+    modal: false,
+    menu2: false
+  })
 }
 </script>

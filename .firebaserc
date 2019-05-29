@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "equipment-management-tool",
+    "staging": "equipment-management-tool"
+  }
+}
