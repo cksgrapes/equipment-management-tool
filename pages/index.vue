@@ -1,7 +1,7 @@
 <template>
-  <v-layout row wrap justify-center reverse align-center>
+  <v-layout row wrap justify-center reverse align-start>
     <v-flex xs12 sm6 md6>
-      <h1 class="display-1">[SOTM001] Microphone - BOSE</h1>
+      <h1 class="display-1">[SOTM001] Microphone - SURE</h1>
       <p class="title">早乙女学園所有備品</p>
       <v-layout row wrap align-center>
         <v-flex xs12 sm6 md6>
@@ -50,7 +50,38 @@
       </template>
     </v-flex>
     <v-flex xs12 sm6 md6>
-      <div>items area</div>
+      <v-item-group>
+        <v-container grid-list-md>
+          <v-layout wrap>
+            <v-flex
+              v-for="n in 12"
+              :key="n"
+              xs12
+              md4
+            >
+              <v-item>
+                <v-card
+                  slot-scope="{ active, toggle }"
+                  :color="active ? 'primary' : ''"
+                  class="d-flex align-center"
+                  dark
+                  height="200"
+                  @click="toggle"
+                >
+                  <v-scroll-y-transition>
+                    <div class="text-xs-center">
+                      <p class="body-1">[SOTM001]</p>
+                      <p class="headline font-weight-bold">Microphone</p>
+                      <p class="title">SURE</p>
+                      <p class="caption">早乙女学園所有備品</p>
+                    </div>
+                  </v-scroll-y-transition>
+                </v-card>
+              </v-item>
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </v-item-group>
     </v-flex>
   </v-layout>
 </template>
