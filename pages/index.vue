@@ -87,14 +87,21 @@
 </template>
 
 <script>
+import { db } from '~/plugins/firebase.js'
+import { mapGetters } from 'vuex'
 // import Logo from '~/components/Logo.vue'
 // import VuetifyLogo from '~/components/VuetifyLogo.vue'
-//
 export default {
   // components: {
   //   Logo,
   //   VuetifyLogo
   // }
+  created: function () {
+    this.$store.dispatch('setUsersRef', db.collection('users'))
+  },
+  computed: {
+    ...mapGetters({ users: 'getUsers' })
+  },
   data: () => ({
     items: ['七海春歌','渋谷友千香','一ノ瀬トキヤ', '一十木音也', '四ノ宮那月'],
     date: new Date().toISOString().substr(0, 10),
