@@ -1,5 +1,7 @@
 const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
-const pkg = require('./package')
+const pkg = require('./package');
+
+require('dotenv').config();
 
 module.exports = {
   mode: 'universal',
@@ -45,6 +47,18 @@ module.exports = {
   modules: [
     '@nuxtjs/pwa'
   ],
+
+  env : {
+    firebase: {
+      apiKey: process.env.FIREBASE_APIKEY,
+      authDomain: process.env.FIREBASE_AUTHDOMAIN,
+      databaseURL: process.env.FIREBASE_DATABASEURL,
+      projectId: process.env.FIREBASE_PROJECTID,
+      storageBucket: process.env.FIREBASE_STORAGEBUCKET,
+      messagingSenderId: process.env.FIREBASE_MESSAGEINGSENDERID,
+      appId: process.env.FIREBASE_APPID
+    }
+  },
 
   /*
    ** Build configuration
